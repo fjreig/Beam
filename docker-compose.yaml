@@ -1,0 +1,26 @@
+services:
+  jupyter:
+    image: jupyter/minimal-notebook
+    container_name: jupyter
+    ports:
+      - "8080:8888"
+    volumes:
+      - ./beam/jobs:/home/jovyan/work
+    env_file:
+      - .env
+  
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+  
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    env_file:
+      - .env
